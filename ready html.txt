@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golden Royal - Personalized T-Shirts</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+body { margin: 0; font-family: 'Poppins', sans-serif; background-color: #fff8f0; color: #333; }
+a { text-decoration: none; color: inherit; }
+header { background-color: #d4af37; padding: 20px 0; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+header h1 { margin: 0; font-size: 2.5em; color: #fff; letter-spacing: 2px; }
+nav { margin-top: 10px; }
+nav a { margin: 0 10px; font-weight: 600; color: #fff; transition: color 0.3s; font-size: 0.9em; }
+nav a:hover { color: #fff5e6; }
+.hero { background: url('https://source.unsplash.com/1600x600/?tshirt,gold') no-repeat center center/cover; height: 350px; display: flex; align-items: center; justify-content: center; color: #fff; text-shadow: 2px 2px 6px #000; }
+.hero h2 { font-size: 2em; background-color: rgba(0,0,0,0.4); padding: 15px 30px; border-radius: 12px; }
+section { padding: 50px 15px; text-align: center; }
+section h2 { font-size: 1.8em; color: #d4af37; margin-bottom: 20px; }
+section p { max-width: 600px; margin: 0 auto; line-height: 1.5; }
+.products { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px; }
+.product { border: 1px solid #ffd700; border-radius: 12px; padding: 15px; width: 220px; transition: transform 0.3s, box-shadow 0.3s; background-color: #fffaf0; }
+.product:hover { transform: translateY(-5px); box-shadow: 0 8px 12px rgba(0,0,0,0.1); }
+.product img { width: 100%; border-radius: 10px; margin-bottom: 12px; }
+.product h3 { margin-bottom: 8px; color: #d4af37; font-size: 1.1em; }
+.product p { font-size: 0.9em; }
+.contact-form input, .contact-form textarea, .order-form input, .order-form textarea, .order-form select { width: 90%; padding: 10px; margin: 8px 0; border-radius: 8px; border: 1px solid #d4af37; }
+.contact-form button, .order-form button, #downloadBtn { padding: 10px 20px; border: none; border-radius: 8px; background-color: #d4af37; color: #fff; font-weight: 600; cursor: pointer; transition: background-color 0.3s; }
+.contact-form button:hover, .order-form button:hover, #downloadBtn:hover { background-color: #b8932b; }
+footer { background-color: #333; color: #fff; padding: 20px 15px; text-align: center; font-size: 0.85em; }
+
+/* Live Preview */
+#preview-container { margin-top: 20px; position: relative; display: inline-block; max-width: 90vw; }
+#tshirt-mockup { width: 100%; max-width: 250px; display: block; }
+#uploaded-image { position: absolute; top: 20%; left: 10%; width: 80%; max-height: 60%; object-fit: contain; cursor: move; border: 1px dashed #d4af37; background: rgba(255,255,255,0.5); touch-action: none; }
+</style>
+</head>
+<body>
+
+<header>
+<h1>Golden Royal</h1>
+<nav>
+<a href="#about">About</a>
+<a href="#products">Products</a>
+<a href="#contact">Contact</a>
+<a href="#order">Order</a>
+</nav>
+</header>
+
+<div class="hero">
+<h2>Make Your T-Shirts Truly Royal!</h2>
+</div>
+
+<section id="about">
+<h2>About Golden Royal</h2>
+<p>We create premium, personalized T-shirts that bring your ideas to life. Perfect for gifts, events, or personal style!</p>
+</section>
+
+<section id="products">
+<h2>Our Products</h2>
+<div class="products">
+<div class="product">
+<img src="https://source.unsplash.com/220x220/?tshirt,custom" alt="Custom Text T-Shirt">
+<h3>Custom Text T-Shirt</h3>
+<p>Add your own words and choose your favorite color for a truly personal touch.</p>
+</div>
+<div class="product">
+<img src="https://source.unsplash.com/220x220/?tshirt,photo" alt="Photo Print T-Shirt">
+<h3>Photo Print T-Shirt</h3>
+<p>Upload your own photo and we’ll print it on a high-quality T-shirt.</p>
+</div>
+<div class="product">
+<img src="https://source.unsplash.com/220x220/?tshirt,design" alt="Design T-Shirt">
+<h3>Design T-Shirt</h3>
+<p>Choose from our exclusive pre-made designs crafted for style and comfort.</p>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact Us</h2>
+<p>Have questions or want to place an order? Reach out directly!</p>
+<p>Phone: <strong>0041779778168</strong></p>
+<form class="contact-form" action="https://formspree.io/f/yourformid" method="POST">
+<input type="text" name="name" placeholder="Your Name" required><br>
+<input type="email" name="_replyto" placeholder="Your Email" required><br>
+<textarea name="message" rows="4" placeholder="Your Message" required></textarea><br>
+<button type="submit">Send Message</button>
+</form>
+</section>
+
+<section id="order">
+<h2>Place Your Personalized T-Shirt Order</h2>
+<p>Upload your photo, choose type, color, size, drag, pinch, rotate it, see your price, and download a preview!</p>
+
+<label for="tshirtType">Choose T-shirt type:</label>
+<select id="tshirtType">
+  <option value="">Select Type</option>
+  <option value="classic">Classic T-Shirt</option>
+  <option value="polo">Polo T-Shirt</option>
+  <option value="vneck">V-Neck T-Shirt</option>
+  <option value="baby">Baby T-Shirt</option>
+</select>
+
+<label for="tshirtColor">Choose T-shirt color:</label>
+<select id="tshirtColor">
+  <option value="white">White</option>
+  <option value="black">Black</option>
+  <option value="red">Red</option>
+  <option value="blue">Blue</option>
+</select>
+
+<label for="tshirtSize">Choose T-shirt size:</label>
+<select id="tshirtSize">
+  <option value="">Select Size</option>
+  <option value="S">Small (S)</option>
+  <option value="M">Medium (M)</option>
+  <option value="L">Large (L)</option>
+  <option value="XL">Extra Large (XL)</option>
+</select>
+
+<p>Price: <span id="price">0</span> USD</p>
+
+<div id="preview-container">
+  <img id="tshirt-mockup" src="https://i.ibb.co/JrPZyY6/tshirt-mockup.png" alt="T-Shirt Mockup">
+  <img id="uploaded-image" src="" alt="Your Design Preview" style="display:none;">
+</div>
+
+<button id="downloadBtn">Download Preview</button>
+
+<form class="order-form" action="https://formspree.io/f/yourformid" method="POST" enctype="multipart/form-data">
+<input type="text" name="name" placeholder="Full Name" required><br>
+<input type="email" name="_replyto" placeholder="Email" required><br>
+<input type="text" name="phone" placeholder="Phone Number" required><br>
+<textarea name="details" rows="4" placeholder="Additional details (Text, Logo, etc.)"></textarea><br>
+<label for="imageUpload">Upload Your Photo for Printing:</label><br>
+<input type="file" name="image" id="imageUpload" accept="image/*" required><br>
+<input type="hidden" name="type" id="hiddenType">
+<input type="hidden" name="color" id="hiddenColor">
+<input type="hidden" name="size" id="hiddenSize">
+<input type="hidden" name="price" id="hiddenPrice">
+<button type="submit">Submit Order</button>
+</form>
+</section>
+
+<footer>
+<p>© 2025 Golden Royal – All Rights Reserved</p>
+</footer>
+
+<script>
+// Variables
+const imageInput = document.getElementById('imageUpload');
+const previewImage = document.getElementById('uploaded-image');
+const tshirtType = document.getElementById('tshirtType');
+const tshirtSize = document.getElementById('tshirtSize');
+const tshirtColor = document.getElementById('tshirtColor');
+const priceEl = document.getElementById('price');
+const hiddenType = document.getElementById('hiddenType');
+const hiddenColor = document.getElementById('hiddenColor');
+const hiddenSize = document.getElementById('hiddenSize');
+const hiddenPrice = document.getElementById('hiddenPrice');
+const tshirtMockup = document.getElementById('tshirt-mockup');
+const downloadBtn = document.getElementById('downloadBtn');
+
+let isDragging=false, offsetX=0, offsetY=0;
+let initialDistance=0, initialAngle=0, currentScale=1, currentRotation=0;
+
+// Type & Size Prices
+const typePrices = { classic: 20, polo: 25, vneck: 22, baby: 15 };
+const sizeMultiplier = { S:1, M:1.1, L:1.2, XL:1.3 };
+
+// Update Price
+function updatePrice(){
+  const type = tshirtType.value;
+  const size = tshirtSize.value;
+  if(type && size){
+    const total = (typePrices[type]*sizeMultiplier[size]).toFixed(2);
+    priceEl.textContent = total;
+    hiddenPrice.value = total;
+  }
+}
+
+// Update hidden values and preview
+[tshirtType, tshirtSize, tshirtColor].forEach(el=>{
+  el.addEventListener('change', ()=>{
+    hiddenType.value = tshirtType.value;
+    hiddenSize.value = tshirtSize.value;
+    hiddenColor.value = tshirtColor.value;
+    updatePrice();
+
+    // Update mockup based on color
+    let color = tshirtColor.value;
+    let mockupUrl = 'https://i.ibb.co/JrPZyY6/tshirt-mockup.png'; // default white
+    if(color==='black') mockupUrl='https://i.ibb.co/3F9M2kM/tshirt-mockup-black.png';
+    else if(color==='red') mockupUrl='https://i.ibb.co/mqz5Nf9/tshirt-mockup-red.png';
+    else if(color==='blue') mockupUrl='https://i.ibb.co/d2Vr3fR/tshirt-mockup-blue.png';
+    tshirtMockup.src = mockupUrl;
+  });
+});
+
+// Load uploaded image
+imageInput.addEventListener('change', function(){
+  const file=this.files[0];
+  if(file){
+    const reader=new FileReader();
+    reader.onload=function(e){
+      previewImage.src=e.target.result;
+      previewImage.style.display='block';
+      previewImage.style.transform='scale(1) rotate(0deg)';
+      currentScale=1;
+      currentRotation=0;
+    }
+    reader.readAsDataURL(file);
+  }
+});
+
+// Desktop drag
+previewImage.addEventListener('mousedown', function(e){ isDragging=true; offsetX=e.offsetX; offsetY=e.offsetY; });
+document.addEventListener('mouseup', ()=>isDragging=false);
+document.addEventListener('mousemove', function(e){
+  if(isDragging){
+    const rect=document.getElementById('preview-container').getBoundingClientRect();
+    let x=e.clientX-rect.left-offsetX;
+    let y=e.clientY-rect.top-offsetY;
+    x=Math.max(0,Math.min(x,rect.width-previewImage.offsetWidth));
+    y=Math.max(0,Math.min(y,rect.height-previewImage.offsetHeight));
+    previewImage.style.left=x+'px';
+    previewImage.style.top=y+'px';
+  }
+});
+
+// Touch drag & pinch/rotate
+previewImage.addEventListener('touchstart', function(e){
+  if(e.touches.length===1){
+    isDragging=true;
+    const touch=e.touches[0];
+    const rect=previewImage.getBoundingClientRect();
+    offsetX=touch.clientX-rect.left;
+    offsetY=touch.clientY-rect.top;
+  } else if(e.touches.length===2){
+    isDragging=false;
+    initialDistance=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+    initialAngle=Math.atan2(e.touches[1].clientY-e.touches[0].clientY,e.touches[1].clientX-e.touches[0].clientX)*180/Math.PI;
+  }
+});
+previewImage.addEventListener('touchmove', function(e){
+  const rect=document.getElementById('preview-container').getBoundingClientRect();
+  if(e.touches.length===1 && isDragging){
+    const touch=e.touches[0];
+    let x=touch.clientX-rect.left-offsetX;
+    let y=touch.clientY-rect.top-offsetY;
+    x=Math.max(0,Math.min(x,rect.width-previewImage.offsetWidth));
+    y=Math.max(0,Math.min(y,rect.height-previewImage.offsetHeight));
+    previewImage.style.left=x+'px';
+    previewImage.style.top=y+'px';
+  } else if(e.touches.length===2){
+    const newDistance=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+    const scaleChange=newDistance/initialDistance;
+    currentScale*=scaleChange;
+    initialDistance=newDistance;
+    const newAngle=Math.atan2(e.touches[1].clientY-e.touches[0].clientY,e.touches[1].clientX-e.touches[0].clientX)*180/Math.PI;
+    currentRotation+=(newAngle-initialAngle);
+    initialAngle=newAngle;
+    previewImage.style.transform=`scale(${currentScale}) rotate(${currentRotation}deg)`;
+  }
+  e.preventDefault();
+});
+previewImage.addEventListener('touchend', function(e){ if(e.touches.length===0) isDragging=false; });
+
+// Download Preview
+downloadBtn.addEventListener('click', ()=>{
+  const container=document.getElementById('preview-container');
+  const tshirtImg=tshirtMockup;
+  const userImg=previewImage;
+  if(!userImg.src){ alert("Please upload your design first!"); return; }
+
+  const canvas=document.createElement('canvas');
+  const rect=container.getBoundingClientRect();
+  canvas.width=rect.width;
+  canvas.height=rect.height;
+  const ctx=canvas.getContext('2d');
+
+  const tshirtCanvasImg=new Image();
+  tshirtCanvasImg.crossOrigin="anonymous";
+  tshirtCanvasImg.src=tshirtImg.src;
+  tshirtCanvasImg.onload=()=>{
+    ctx.drawImage(tshirtCanvasImg,0,0,canvas.width,canvas.height);
+    const userCanvasImg=new Image();
+    userCanvasImg.crossOrigin="anonymous";
+    userCanvasImg.src=userImg.src;
+    userCanvasImg.onload=()=>{
+      const style=window.getComputedStyle(userImg);
+      const left=parseFloat(style.left)||0;
+      const top=parseFloat(style.top)||0;
+      const width=userImg.offsetWidth;
+      const height=userImg.offsetHeight;
+      const transform=style.transform;
+      ctx.save();
+      if(transform && transform!=="none"){
+        const values=transform.match(/matrix\(([^)]+)\)/)[1].split(',').map(Number);
+        ctx.setTransform(values[0],values[1],values[2],values[3],values[4],values[5]);
+      }
+      ctx.drawImage(userCanvasImg,left,top,width,height);
+      ctx.restore();
+      const link=document.createElement('a');
+      link.download='my-custom-tshirt.png';
+      link.href=canvas.toDataURL('image/png');
+      link.click();
+    }
+  }
+});
+</script>
+</body>
+</html>
